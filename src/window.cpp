@@ -226,15 +226,15 @@ void Window::createWindow()
         return;
     }
 
-	int x, y, w, h;
-	SDL_GetWindowPosition(mWindow, &x, &y);
-	SDL_GL_GetDrawableSize(mWindow, &w, &h);
+  	int x, y, w, h;
+  	SDL_GetWindowPosition(mWindow, &x, &y);
+  	SDL_GL_GetDrawableSize(mWindow, &w, &h);
 
-	mRect = new Rectangle(y, y + mMode.h, x, x + mMode.w);
-	mDrawRect = new Rectangle(0, h, 0, w);
+  	mRect = new Rectangle(y, y + mMode.h, x, x + mMode.w);
+  	mDrawRect = new Rectangle(0, h, 0, w);
 
-    if (glewInit() != GLEW_OK)
-        exit(EXIT_FAILURE);
+    //Load glad
+    gladLoadGLLoader((GLADloadproc) SDL_GL_GetProcAddress);
 
     SDL_GL_SetSwapInterval(1);
 }
